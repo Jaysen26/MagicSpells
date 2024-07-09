@@ -1,0 +1,40 @@
+magic-items:
+    Vision_Energetique_Medicale:
+        type: "potion"
+        name: "&b&oVision Énergétique Médicale"
+
+Vision_Energetique_Medicale_Buff:
+    spell-class: ".targeted.HealSpell"
+    right-click-cast-item: Vision_Energetique_Medicale
+    range: 20
+    cooldown: 60
+    heal-amount: 0
+    effects:
+        target:
+            - effect: particles
+              name: heart
+              count: 10
+              speed: 0.1
+              offset: 1
+        caster:
+            - effect: particles
+              name: happy_villager
+              count: 10
+              speed: 0.1
+              offset: 1
+    conditions:
+        - condition: target-has-effect
+          effect: poison
+          result: "true"
+          message: "Le joueur est empoisonné!"
+        - condition: target-has-effect
+          effect: regeneration
+          result: "true"
+          message: "Le joueur est en régénération!"
+    cost:
+        - mana: 30
+    str-cost: 30 mana
+    cooldown-message: "Vous devez attendre avant d'utiliser ce sort à nouveau!"
+    cast-message: "Vous utilisez Vision Énergétique Médicale!"
+    success-message: "Vous avez analysé le flux de chakra de votre cible."
+    can-cast-by-command: false
