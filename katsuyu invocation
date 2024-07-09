@@ -1,0 +1,85 @@
+Katsuyu_Summon_Buff:
+    spell-class: ".buff.DummySpell"
+    right-click-cast-item: Katsuyu_Summon
+    duration: 2400  # 2 minutes in ticks (20 ticks = 1 second)
+    effects:
+        sphere:
+            position: buff
+            effect: effectlibentity
+            effect-interval: 1
+            effectlib:
+                class: SphereEffect
+                radius: 0.5
+                particle: SLIME
+                particles: 10
+                color: 00ff00
+                relativeOffset: 0.08,0.8,0.4
+                pitch: 0
+                duration: 20
+        sound:
+            position: buff
+            effect: sound
+            sound: entity.slime.jump
+            volume: 0.5
+            pitch: 1
+            effect-interval: 22
+    can-cast-by-command: false
+
+Katsuyu_Summon_Passive:
+    spell-class: ".PassiveSpell"
+    triggers: [givedamage]
+    modifiers: [buffactive Katsuyu_Summon_Buff required]
+    cancel-default-action: true
+    spells: [Katsuyu_Summon_Hit_Multi(mode=full)]
+    can-cast-by-command: false
+
+Katsuyu_Summon_Cleanse:
+    spell-class: ".targeted.CleanseSpell"
+    target-self: true
+    remove: ["buff:Katsuyu_Summon_Buff"]
+    can-cast-by-command: false
+
+Katsuyu_Summon_Hit_Multi:
+    spell-class: ".MultiSpell"
+    spells:
+        - DELAY 1
+        - Katsuyu_Summon_Cleanse(mode=full)
+        - Katsuyu_Summon_Hit_Forcepush(mode=full)
+        - Katsuyu_Summon_Hit_Pain(mode=full)
+    can-cast-by-command: false
+
+Katsuyu_Summon_Hit_Forcepush:
+    spell-class: ".instant.ForcepushSpell"
+    target-players: true
+    pushback-force: 10
+    additional-vertical-force: 5
+    can-cast-by-command: false
+
+Katsuyu_Summon_Hit_Pain:
+    spell-class: ".targeted.PainSpell"
+    damage: 0  # No damage
+    effects:
+        particles:
+            position: target
+            effect: particles
+            particle-name: slime
+            horiz-spread: 0.3
+            vert-spread: 0.3
+            height-offset: 1
+            speed: 0.02
+            count: 8
+        sound:
+            position: target
+            effect: sound
+            sound: entity.generic.explode
+            volume: 1
+            pitch: 1
+    can-cast-by-command: false
+
+Katsuyu_Regeneration:
+    spell-class: ".buff.PotionEffectSpell"
+    potion-effect: regeneration
+    potion-amplifier: 2  # Regeneration III
+    potion-duration: 1200  # 1 minute in ticks (20 ticks = 1 second)
+    target-self: true
+    can-cast-by-command: false
