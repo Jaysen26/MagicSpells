@@ -1,0 +1,26 @@
+
+  Soin_De_Groupe:
+    spell-class: .instant.HealSpell
+    name: "&aSoin de Groupe"
+    description: Soigne tous les joueurs dans un rayon de 10 blocs.
+    cast-item: stick
+    cooldown: 30
+    range: 10
+    heal-amount: 50
+    effects:
+      target:
+        - effect: particles
+          name: heart
+          count: 20
+          speed: 0.5
+          offset: 1
+    cost:
+      - mana: 50
+    str-cost: 50 mana
+    cooldown-message: "&cVous devez attendre avant de pouvoir utiliser ce sort à nouveau!"
+    cast-message: "&aVous lancez un Soin de Groupe!"
+    success-message: "&aVous avez soigné tous les joueurs dans un rayon de 10 blocs!"
+    fail-message: "&cAucun joueur à soigner dans les environs!"
+    can-cast-by-command: true
+    target-players: true
+    radius: 10
