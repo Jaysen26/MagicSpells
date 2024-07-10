@@ -1,0 +1,35 @@
+---
+Buff_De_Puissance:
+  spell-class: .instant.PotionSpell
+  name: "&cBuff de Puissance"
+  description: Donne Régénération V, Vitesse III, Force I, et Résistance I pendant
+    20 secondes.
+  cast-item: blaze_rod
+  cooldown: 60
+  effects:
+    - effect: particles
+      name: villager_happy
+      count: 30
+      speed: 0.5
+      offset: 1
+  cost:
+    - mana: 40
+  str-cost: 40 mana
+  cooldown-message: "&cVous devez attendre avant de pouvoir utiliser ce sort à nouveau!"
+  cast-message: "&aVous lancez le Buff de Puissance!"
+  success-message: "&aVous avez reçu le Buff de Puissance!"
+  fail-message: "&cLe sort a échoué!"
+  can-cast-by-command: true
+  potions:
+    - effect: regeneration
+      amplifier: 4
+      duration: 400
+    - effect: speed
+      amplifier: 2
+      duration: 400
+    - effect: strength
+      amplifier: 0
+      duration: 400
+    - effect: resistance
+      amplifier: 0
+      duration: 400
