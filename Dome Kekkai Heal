@@ -1,0 +1,39 @@
+healingdome:
+  spell-class: "BuffSpell"
+  name: "HealingDome"
+  cooldown: 60
+  cast-item: blaze_rod
+  target-self: true
+  radius: 5
+  duration: 200  # Duration in ticks (10 seconds)
+  buffs:
+    - healthregeneration
+  healthregeneration:
+    heal-interval: 20  # Heal every 1 second
+    heal-amount: 7  # Amount of health to heal each interval
+  str-cost: 10
+  str-value: 100
+  particle-effect: "happyVillager"
+  particle-amount: 100
+  particle-color: "GREEN"
+  spell-icon: ghast_tear
+  effects:
+    cast:
+      class: EffectRing
+      particle: happyVillager
+      color: green
+      radius: 5
+      duration: 200
+      density: 1.0
+    tick:
+      interval: 20  # Every second
+      effects:
+        - class: EffectRing
+          particle: happyVillager
+          color: green
+          radius: 5
+          duration: 10
+          density: 1.0
+  str-cast-self: "You cast HealingDome and create a dome of healing energy around you."
+  str-cast-others: "%a has created a HealingDome!"
+  str-fade: "The HealingDome fades away."
